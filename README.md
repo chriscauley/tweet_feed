@@ -13,8 +13,9 @@ To use this module, add it to the modules array in the `config/config.js` file:
 modules: [
 	{
 		module: 'twitter',
-		position: 'bottom_bar',	// This can be any of the regions. Best results in center regions.
+		position: 'bottom_bar',
 		config: {
+			width: "", // width in pixels of box. Defaults to 500.
 			keys: {
 				consumer_key: '',
 				consumer_secret: '',

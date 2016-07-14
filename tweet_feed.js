@@ -63,7 +63,7 @@ Module.register("tweet_feed",{
 	// Override dom generator.
 	getDom: function() {
 		var wrapper = document.createElement("div");
-
+    wrapper.style.width = (this.config.width || '500') + 'px';
 		this.tweets = this.tweets || [];
 		if (this.activeItem >= this.tweets.length) {
 		  wrapper.innerHTML = this.translate("LOADING");
@@ -76,8 +76,9 @@ Module.register("tweet_feed",{
     }
 
 		var tweet = this.tweets[this.activeItem];
+    var i = "<i class='fa fa-twitter bright'></i>";
 		var top = document.createElement("div");
-		top.appendChild(this.createElement("b","@"+tweet.user.screen_name));
+		top.appendChild(this.createElement("b",i+"@"+tweet.user.screen_name));
     
 		var time = document.createElement("span");
     time.innerHTML = moment(new Date(tweet.created_at)).format("lll");
@@ -85,7 +86,7 @@ Module.register("tweet_feed",{
 		time.style.paddingLeft = "20px";
 		top.appendChild(time);
 		wrapper.appendChild(top);
-		wrapper.appendChild(this.createElement("p",tweet.text));
+		wrapper.appendChild(this.createElement("div",tweet.text,{className: "small"}));
 
 		return wrapper;
 	},
